@@ -30,3 +30,14 @@ contract dCoders{
         winner.transfer(address(this).balance);
     }
 }
+
+contract subm{
+    address winner;
+    
+    function result(address _a) public{
+        if(winner == address(0)){
+            winner = _a;
+        }
+        else    return;
+    }
+}
