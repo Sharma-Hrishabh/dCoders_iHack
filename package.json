@@ -1,0 +1,26 @@
+{
+  "name": "dcoders",
+  "version": "1.0.0",
+  "description": "decentralized coding platform",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sharma-Hrishabh/dCoders_iHack.git"
+  },
+  "author": "A'did_Shafts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sharma-Hrishabh/dCoders_iHack/issues"
+  },
+  "homepage": "https://github.com/Sharma-Hrishabh/dCoders_iHack#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "truffle-hdwallet-provider": "^1.0.2"
+  }
+}

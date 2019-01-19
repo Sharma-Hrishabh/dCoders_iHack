@@ -1,6 +1,6 @@
 pragma solidity >=0.4.22;
 
-contract reg{
+contract dCoders{
     
     address owner;
     uint256 regFee = 2 ether;
