@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "dotenv": "^6.2.0",
     "truffle-hdwallet-provider": "^1.0.2"
   },
-  "devDependencies":{
-    "lite-server":"^2.3.0"
+  "devDependencies": {
+    "lite-server": "^2.3.0"
   }
 }
