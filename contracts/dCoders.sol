@@ -4,8 +4,9 @@ pragma solidity >=0.4.22;
 contract dCoders {
   address public organiser;
   uint public numRegistrants;
-  uint private regFee;
-  event Register(address _from);
+  uint public regFee;
+  event Register(address indexed _from);
+  mapping (address => uint) public balance;  
 
   constructor() public {
     organiser = msg.sender;
@@ -13,9 +14,10 @@ contract dCoders {
     regFee = 2 wei;
   }
 
-
-
-
-
+  function () payable external {
+ require(msg.value == 2 wei);
+ balance[address(this)] += regFee;     
+ emit Register(msg.sender);  
+}
 
 }
