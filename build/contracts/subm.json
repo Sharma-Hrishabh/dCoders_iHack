@@ -1,76 +1,25 @@
 {
-  "contractName": "dCoders",
+  "contractName": "subm",
   "abi": [
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "balances",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x27e235e3"
-    },
-    {
-      "inputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor",
-      "signature": "constructor"
-    },
-    {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_buyer",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "prizeDistribution",
-      "type": "event",
-      "signature": "0x62d924e91ed4409bc4fd09109a0acbab8812f25e328a7afcd2cfc8f72ba531b6"
-    },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_winner",
+          "name": "_a",
           "type": "address"
         }
       ],
-      "name": "distri",
+      "name": "result",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xe55809af"
+      "type": "function"
     }
   ],
-  "bytecode": "0x6080604052671bc16d674ec80000600155600060035534801561002157600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550671bc16d674ec8000060018190555061031e806100806000396000f3fe60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e314610160578063e55809af146101c5575b34600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555034600460003073ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555060023390806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050600360008154809291906001019190505550005b34801561016c57600080fd5b506101af6004803603602081101561018357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610216565b6040518082815260200191505060405180910390f35b3480156101d157600080fd5b50610214600480360360208110156101e857600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061022e565b005b60046020528060005260406000206000915090505481565b80600560006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600560009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f193505050501580156102ee573d6000803e3d6000fd5b505056fea165627a7a7230582097a8528c4a3ebb217caba923cda41f5ebd4bb48f4e3fb27830cd1402ab0fde5e0029",
-  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e314610160578063e55809af146101c5575b34600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555034600460003073ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254019250508190555060023390806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050600360008154809291906001019190505550005b34801561016c57600080fd5b506101af6004803603602081101561018357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610216565b6040518082815260200191505060405180910390f35b3480156101d157600080fd5b50610214600480360360208110156101e857600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061022e565b005b60046020528060005260406000206000915090505481565b80600560006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600560009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f193505050501580156102ee573d6000803e3d6000fd5b505056fea165627a7a7230582097a8528c4a3ebb217caba923cda41f5ebd4bb48f4e3fb27830cd1402ab0fde5e0029",
-  "sourceMap": "27:739:1:-;;;90:7;73:24;;146:1;137:10;;316:81;8:9:-1;5:2;;;30:1;27;20:12;5:2;316:81:1;354:10;346:5;;:18;;;;;;;;;;;;;;;;;;383:7;374:6;:16;;;;27:739;;;;;;",
-  "deployedSourceMap": "27:739:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;471:9;445:8;:22;455:10;445:22;;;;;;;;;;;;;;;;:35;;;;;;;;;;;517:9;490:8;:23;507:4;490:23;;;;;;;;;;;;;;;;:36;;;;;;;;;;;536:10;552;536:27;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;536:27:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;573:1;;:3;;;;;;;;;;;;;27:739;158:43;;8:9:-1;5:2;;;30:1;27;20:12;5:2;158:43:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;158:43:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;636:128;;8:9:-1;5:2;;;30:1;27;20:12;5:2;636:128:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;636:128:1;;;;;;;;;;;;;;;;;;;;;;158:43;;;;;;;;;;;;;;;;;:::o;636:128::-;702:7;693:6;;:16;;;;;;;;;;;;;;;;;;719:6;;;;;;;;;;;:15;;:38;743:4;735:21;;;719:38;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;719:38:1;636:128;:::o",
+  "bytecode": "0x608060405234801561001057600080fd5b50610167806100206000396000f3fe608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806377302b0b14610046575b600080fd5b34801561005257600080fd5b506100956004803603602081101561006957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610097565b005b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561013257806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610137565b610138565b5b5056fea165627a7a72305820c3a9c20b9b941cc3a87e55d93c2fc4fbec9210902f05fd5033526bd645a0a6b40029",
+  "deployedBytecode": "0x608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806377302b0b14610046575b600080fd5b34801561005257600080fd5b506100956004803603602081101561006957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610097565b005b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561013257806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610137565b610138565b5b5056fea165627a7a72305820c3a9c20b9b941cc3a87e55d93c2fc4fbec9210902f05fd5033526bd645a0a6b40029",
+  "sourceMap": "768:180:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;768:180:1;;;;;;;",
+  "deployedSourceMap": "768:180:1:-;;;;;;;;;;;;;;;;;;;;;;;;812:134;;8:9:-1;5:2;;;30:1;27;20:12;5:2;812:134:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;812:134:1;;;;;;;;;;;;;;;;;;;;;;;877:1;859:20;;:6;;;;;;;;;;;:20;;;856:84;;;903:2;894:6;;:11;;;;;;;;;;;;;;;;;;856:84;;;933:7;;856:84;812:134;;:::o",
   "source": "pragma solidity >=0.4.22;\n\ncontract dCoders{\n    \n    address owner;\n    uint256 regFee = 2 ether;\n    address[] private registered;\n    uint a = 0;\n    \n    mapping(address => uint256) public balances;\n    address payable winner;\n    \n    event prizeDistribution( address indexed _buyer, uint256 _amount);\n    \n    constructor() public{\n        owner = msg.sender;\n        regFee = 2 ether;\n    }\n    \n    function () payable external{\n        balances[(msg.sender)] -= msg.value;\n        balances[address(this)] += msg.value;\n        registered.push(msg.sender);\n        a++;\n        // emit registeration(msg.sender);\n    }\n    \n    function distri(address payable _winner) public{\n        winner = _winner;\n        winner.transfer(address(this).balance);\n    }\n}\n\ncontract subm{\n    address winner;\n    \n    function result(address _a) public{\n        if(winner == address(0)){\n            winner = _a;\n        }\n        else    return;\n    }\n}\n",
   "sourcePath": "/home/hrishabh/Desktop/dCoders/contracts/dCoders.sol",
   "ast": {
@@ -2823,22 +2772,9 @@
     "name": "solc",
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
-  "networks": {
-    "4": {
-      "events": {},
-      "links": {},
-      "address": "0xC8d02a7c7eC79C7e89A3515c5cb14A9a4e09e83D",
-      "transactionHash": "0x0d7bf9eef50007fd34e2cb91d6d7da564e35881179a2064c571fa9bb9a49594b"
-    },
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0xF198c57CEfD8899Fb0759883B2b1Aa041E0dD599",
-      "transactionHash": "0x206d4bafc55c463195b4f9b091d3c9c7852399562e18ef08d158f4dfa959e60e"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.0.0",
-  "updatedAt": "2019-01-19T21:35:42.308Z",
+  "updatedAt": "2019-01-19T21:24:49.231Z",
   "devdoc": {
     "methods": {}
   },
