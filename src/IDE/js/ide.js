@@ -55,9 +55,121 @@ console.log(JSON.stringify(data));
   outputEditor.setValue(stdout);
 
   if (stdout == "hello, world\n") {
-    console.log("Submission Accepted!");
-
+    alert("Submission Accepted!");
+    if (typeof web3 !== "undefined") {
+      web3 = new Web3(web3.currentProvider);
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+      const subm = web3.eth.contract([
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_a",
+              "type": "address"
+            }
+          ],
+          "name": "result",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ]);
+      var inst_subm = subm.at('0xAb9B43c36030d9AB7A7261564d4e54c172a853B6');
+      const dcoder = web3.eth.contract([
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "balances",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function",
+          "signature": "0x27e235e3"
+        },
+        {
+          "inputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "constructor",
+          "signature": "constructor"
+        },
+        {
+          "payable": true,
+          "stateMutability": "payable",
+          "type": "fallback"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_buyer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "prizeDistribution",
+          "type": "event",
+          "signature": "0x62d924e91ed4409bc4fd09109a0acbab8812f25e328a7afcd2cfc8f72ba531b6"
+        },
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_winner",
+              "type": "address"
+            }
+          ],
+          "name": "distri",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "signature": "0xe55809af"
+        }
+      ]);
+      var inst_dcoder = dcoder.at('0xad8e3F5D68E9529FF01A7bD17D00ba4Bab14A2D3');
+      inst_subm.result.sendTransaction(web3.eth.defaultAccount, {from: web3.eth.defaultAccount},
+      function(error, result) {
+          if (!error) {
+              console.log(JSON.stringify(result));
+              // window.location.href = "Timer canvas/index.html";
+          }
+          else {
+              console.log(error);
+              alert(""+error);
+          }
+      });
+      inst_dcoder.distri.sendTransaction(web3.eth.defaultAccount, {from: web3.eth.defaultAccount},
+        function(error, result) {
+            if (!error) {
+                console.log(JSON.stringify(result));
+                // window.location.href = "Timer canvas/index.html";
+            }
+            else {
+                console.log(error);
+                alert(""+error);
+            }
+        });
+    }
     // else console.log("error"+stdout);
+  } else {
+    alert("Wrong submission!");
   }
 
   updateEmptyIndicator();

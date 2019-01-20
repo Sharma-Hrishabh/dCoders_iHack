@@ -7,23 +7,13 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "lite-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sharma-Hrishabh/dCoders_iHack.git"
+    "start":"lite-server"
   },
   "author": "A'did_Shafts",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sharma-Hrishabh/dCoders_iHack/issues"
-  },
-  "homepage": "https://github.com/Sharma-Hrishabh/dCoders_iHack#readme",
   "dependencies": {
+    "lite-server": "^2.3.0",
     "dotenv": "^6.2.0",
     "truffle-hdwallet-provider": "^1.0.2"
-  },
-  "devDependencies": {
-    "lite-server": "^2.3.0"
   }
 }

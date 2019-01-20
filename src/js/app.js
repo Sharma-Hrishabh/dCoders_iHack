@@ -5,7 +5,7 @@ App = {
     register: function(event) {
         event.preventDefault();
         $('#btn1').attr('disabled','disabled');
-        web3.eth.sendTransaction({from:web3.eth.defaultAccount, to:'0x70596afd86c5933974f82f76d9f864515535f9c9', value: web3.toWei(0.0001, 'ether'), gasLimit: 24000, gasPrice: 20000000000},
+        web3.eth.sendTransaction({from:web3.eth.defaultAccount, to:'0xad8e3F5D68E9529FF01A7bD17D00ba4Bab14A2D3', value: web3.toWei(0.0001, 'ether'), gasLimit: 24000, gasPrice: 20000000000},
         function(error, result) {
             if (!error) {
                 console.log(JSON.stringify(result));
