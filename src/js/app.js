@@ -9,7 +9,7 @@ App = {
         function(error, result) {
             if (!error) {
                 console.log(JSON.stringify(result));
-                window.location.href = "IDE/index.html";
+                window.location.href = "Timer canvas/index.html";
             }
             else {
                 console.log(error);
