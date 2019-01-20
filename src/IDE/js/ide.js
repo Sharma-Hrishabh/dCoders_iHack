@@ -33,7 +33,7 @@ function handleRunError(jqXHR, textStatus, errorThrown) {
 function handleResult(data) {
   timeEnd = performance.now();
   console.log("It took " + (timeEnd - timeStart) + " ms to get submission result.");
-
+console.log(JSON.stringify(data));
   var status = data.status;
   var stdout = decodeURIComponent(escape(atob(data.stdout || "")));
   var stderr = decodeURIComponent(escape(atob(data.stderr || "")));
@@ -53,6 +53,12 @@ function handleResult(data) {
   }
 
   outputEditor.setValue(stdout);
+
+  if (stdout == "hello, world\n") {
+    console.log("Submission Accepted!");
+
+    // else console.log("error"+stdout);
+  }
 
   updateEmptyIndicator();
   $runBtn.button("reset");
@@ -76,12 +82,13 @@ function run() {
   var sourceValue = btoa(unescape(encodeURIComponent(sourceEditor.getValue())));
   var inputValue = btoa(unescape(encodeURIComponent(inputEditor.getValue())));
   var languageId = $selectLanguageBtn.val();
+  var out = "212";
   var data = {
     source_code: sourceValue,
     language_id: languageId,
-    stdin: inputValue
+    stdin: "11 201"
   };
-
+console.log(data);
   timeStart = performance.now();
   $.ajax({
     url: BASE_URL + `/submissions?base64_encoded=true&wait=${WAIT}`,
@@ -143,6 +150,7 @@ function save() {
       if (getIdFromURI() != data["long"]) {
         window.history.replaceState(null, null, location.origin + location.pathname + "?" + data["long"]);
       }
+
     },
     error: function(jqXHR, textStatus, errorThrown) {
       handleError(jqXHR, textStatus, errorThrown);
