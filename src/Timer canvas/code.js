@@ -15,7 +15,7 @@ function draw(){
     c.globalAlpha = 1;
     var d1 = new Date();
     d1.getUTCDate();
-    var d2 = new Date(2019,01,20,09,32,00);         //begin time
+    var d2 = new Date(2019,01,20,11,30,00);         //begin time
     var date = new Date(d2-d1);
     var hour = date.getUTCHours();
     var min = date.getUTCMinutes();
