@@ -1,19 +1,23 @@
 .butt {
   /*font-family: Exo2;*/
-  margin: 10 0 0; 
+  /*margin: 10 0 0; */
+  /*position: absolute;*/
   font-family: 'ZCOOL KuaiLe', cursive;
   font-size: 20px;
-  background: white;
+  background-color: white;
+  text-decoration-color: black;
   padding: 0.7rem 5.0rem;
   border: 3px solid black;
-  margin-right: 2.6rem;
+  /*margin-right: 2.6rem;*/
   box-shadow: 0 0 0 black;
   transition: all 0.2s;
   background-color: #ffffff;
+  z-index: 2;
 }
 
 .butt:last-child {
-  margin: 370px 600px 0px;
+  position: absolute;
+  /*margin: 370px 100px 0px;*/
 }
 
 .butt:hover {
@@ -25,3 +29,24 @@
   box-shadow: 0 0 0 black;
   transform: translate(0, 0);
 }
+#canvas{
+  z-index: 1;
+}
+/*#container
+{
+  height: 400px;
+  position: relative;
+  width: 400px;
+}
+#viewport
+{
+  height: 100%;
+  width: 100%;
+}
+#controls
+{
+  bottom: -1000px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}*/
