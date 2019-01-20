@@ -5,5 +5,4 @@ module.exports = {
         baseDir:["./src","./build/contracts"]
     }
 
-
 }
