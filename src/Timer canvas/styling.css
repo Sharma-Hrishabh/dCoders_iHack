@@ -1,0 +1,27 @@
+.butt {
+  /*font-family: Exo2;*/
+  margin: 10 0 0; 
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 20px;
+  background: white;
+  padding: 0.7rem 5.0rem;
+  border: 3px solid black;
+  margin-right: 2.6rem;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+  background-color: #ffffff;
+}
+
+.butt:last-child {
+  margin: 370px 600px 0px;
+}
+
+.butt:hover {
+  box-shadow: 1.2rem 1.2rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+}
+
+.butt:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
