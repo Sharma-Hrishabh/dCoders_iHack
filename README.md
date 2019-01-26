@@ -38,7 +38,7 @@ On the completition of event, the top performers are decide based on the submiss
 
     `sudo mysqld_safe --skip-grant-tables&
     sudo mysql --user=root mysql`
-    
+    https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
     mysql> `update user set authentication_string=PASSWORD('new-password') where user='root';
     flush privileges; quit`
     
@@ -51,3 +51,6 @@ On the completition of event, the top performers are decide based on the submiss
 - [Serve static file](https://www.youtube.com/watch?v=mW2NyglYpm8)
 - [Add user and grant permissions to mysql](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
 - [Connect mysql to nodejs express server](https://expressjs.com/en/guide/database-integration.html#mysql)
+- [Create SQL tables](https://dev.mysql.com/doc/refman/5.7/en/datetime.html)
+- [Sleep in javascript](https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep)
+- [Get access to accounts in privacy-mode](https://ethereum.stackexchange.com/questions/61709/metamask-warning)
