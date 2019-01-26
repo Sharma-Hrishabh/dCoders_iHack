@@ -33,8 +33,21 @@ On submission, the source code and other required details are captured from clie
 ## The Winners
 On the completition of event, the top performers are decide based on the submissions
 
+# Resolving known issues
+-   mysql root password reset
+
+    `sudo mysqld_safe --skip-grant-tables&
+    sudo mysql --user=root mysql`
+    
+    mysql> `update user set authentication_string=PASSWORD('new-password') where user='root';
+    flush privileges; quit`
+    
+    `sudo service mysql restart
+    sudo mysql -u root -p`
 
 # References
 - [Creating Node.js Application](https://expressjs.com)
 - [Render file](https://codeforgeek.com/2015/01/render-html-file-expressjs/)
 - [Serve static file](https://www.youtube.com/watch?v=mW2NyglYpm8)
+- [Add user and grant permissions to mysql](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+- [Connect mysql to nodejs express server](https://expressjs.com/en/guide/database-integration.html#mysql)
