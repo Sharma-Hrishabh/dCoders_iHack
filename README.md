@@ -38,3 +38,5 @@ On the completition of event, the top performers are decide based on the submiss
 - [Creating Node.js Application](https://expressjs.com)
 - [Render file](https://codeforgeek.com/2015/01/render-html-file-expressjs/)
 - [Serve static file](https://www.youtube.com/watch?v=mW2NyglYpm8)
+- [Add user and grant permissions to mysql](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+- [Connect mysql to nodejs express server](https://expressjs.com/en/guide/database-integration.html#mysql)
