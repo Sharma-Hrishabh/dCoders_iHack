@@ -1,3 +1,5 @@
+var txID = null;
+
 App = {
     web3Provider: null,
     contracts: {},
@@ -8,8 +10,8 @@ App = {
         web3.eth.sendTransaction({from:web3.eth.defaultAccount, to:'0xad8e3F5D68E9529FF01A7bD17D00ba4Bab14A2D3', value: web3.toWei(0.0001, 'ether'), gasLimit: 24000, gasPrice: 20000000000},
         function(error, result) {
             if (!error) {
-                console.log(JSON.stringify(result));
-                window.location.href = "timer";
+                txID = result;
+                monitor();
             }
             else {
                 console.log(error);
@@ -29,22 +31,42 @@ App = {
         }
   
         web3 = new Web3(App.web3Provider);
+        App.web3Provider.enable()
   
-      return App.initContract();
+      return App.bindEvents();
     },
 
-    initContract: function() {
-        $.getJSON("dCoders.json",function(data){
-          var registrationArtifact = data;
-          App.contracts.resiteration = TruffleContract(registrationArtifact);
-          App.contracts.registration.setProvider(App.web3Provider);
-          return App.register();
-        });
-        return App.bindEvents();
-    },
-
+    
     bindEvents: function() {
         $(document).on('click', '#btn1', App.register);
+    }
+}
+
+// sleep time expects milliseconds
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+async function monitor() {
+    var status = 0;
+    while (status != 1) {
+        // console.log(txID);
+        web3.eth.getTransactionReceipt(txID,function(error, result) {
+            if (!error) {
+                try {
+                    status = parseInt(result.status, 16);
+                    if (status == 1){
+                        window.location.href = "timer";
+                        return;
+                    }
+                } catch (e) {
+                    ;
+                }
+            } else {
+                console.log(error);
+            }
+        });
+        await sleep(1000);
     }
 }
 
