@@ -37,3 +37,4 @@ On the completition of event, the top performers are decide based on the submiss
 # References
 - [Creating Node.js Application](https://expressjs.com)
 - [Render file](https://codeforgeek.com/2015/01/render-html-file-expressjs/)
+- [Serve static file](https://www.youtube.com/watch?v=mW2NyglYpm8)
