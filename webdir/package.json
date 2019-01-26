@@ -8,5 +8,10 @@
     "start": "node server.js"
   },
   "author": "Ujjwal",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "hjs": "0.0.6",
+    "hogan-middleware": "^0.2.2",
+    "mysql": "^2.16.0"
+  }
 }
