@@ -98,8 +98,9 @@ function post(account) {
                 await sleep(1000);
                 post(web3.eth.defaultAccount);
             } else if (status == 2) {
-                alert("Transaction still pending!\nPlease wait for confirmation.");
-                // monitor()
+                alert("Transaction still pending!\nPlease wait for confirmation.\nYou will be automatically redirected from here.");
+                txID = JSON.parse(this.responseText).txid;
+                monitor()
             } else {
                 App.bindEvents();
                 document.getElementById('btn1').style.display = "block";

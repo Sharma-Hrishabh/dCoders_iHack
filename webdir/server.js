@@ -66,12 +66,28 @@ app.post('/userreg', function(req, res) {
     console.log('POST userreg: ' + req.body.account)
     if (req.body.account == null)
         res.send({
-            status: 0
+            status: 0,
+            description: "Invalid post request"
         })
     else {
-        res.send({
-            status: 3
-        })
+        try {
+            connection.query('select * from participants where pubkey like \'' +
+                req.body.account + '\' and event like (select id from events order by time);',
+                function(err, rows, fields) {
+                    if (err) throw err
+                    if (rows[0].txstatus == 0) {
+                        // TODO: recheck the transaction status
+                        res.send({status: 2, txid: rows[0].txid})
+                    } else if (rows[0].txstatus == 1) {
+                        res.send({status: 3})
+                    }
+                })
+        } catch (e) {
+            console.log(e)
+            res.send({
+                error: "Internal server error"
+            })
+        }
     }
     // return res.send(req.body)
 })
@@ -79,21 +95,27 @@ app.post('/userreg', function(req, res) {
 app.post('/posttx', function(req, res) {
     if (req.body.txid == null || req.body.account == null)
         res.send({
-            error: "Transaction id not provided."
+            error: "Invalid request parameters."
         })
     else {
-        // TODO: insert into database
-        connection.query('insert into participants values (\'' +
-            req.body.account +
-            '\', (select id from events order by time), \'' +
-            req.body.txid +
-            '\', (select now()), 0);',
-            function(err, rows, fields) {
-                if (err) throw err;
+        try {
+            connection.query('insert into participants values (\'' +
+                req.body.account +
+                '\', (select id from events order by time), \'' +
+                req.body.txid +
+                '\', (select now()), 0);',
+                function(err, rows, fields) {
+                    if (err) throw err;
+                })
+            res.send({
+                status: "Success"
             })
-        res.send({
-            status: "Success"
-        })
+        } catch (e) {
+            console.log(e)
+            res.send({
+                error: "Internal server error"
+            })
+        }
     }
 })
 
