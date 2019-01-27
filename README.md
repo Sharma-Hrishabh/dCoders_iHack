@@ -38,7 +38,7 @@ On the completition of event, the top performers are decide based on the submiss
 
     `sudo mysqld_safe --skip-grant-tables&
     sudo mysql --user=root mysql`
-    https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+    
     mysql> `update user set authentication_string=PASSWORD('new-password') where user='root';
     flush privileges; quit`
     
