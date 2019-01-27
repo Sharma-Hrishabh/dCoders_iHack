@@ -24,6 +24,7 @@ App = {
         if(typeof web3 !== undefined) {
             App.web3Provider = web3.currentProvider;
             web3.eth.defaultAccount = web3.eth.accounts[0];
+            post(web3.eth.defaultAccount || "0x1234567890123456789012345678");
         }
         else {
             alert("MetaMask not found! Working on localhost:7545.");
@@ -36,7 +37,6 @@ App = {
       return App.bindEvents();
     },
 
-    
     bindEvents: function() {
         $(document).on('click', '#btn1', App.register);
     }
@@ -68,6 +68,26 @@ async function monitor() {
         });
         await sleep(1000);
     }
+}
+
+function post(account) {
+    var data = JSON.stringify({
+      "account": account
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        if (JSON.parse(this.responseText).status) window.location.href = "timer";
+      }
+    });
+
+    xhr.open('POST', 'userreg');
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
 }
 
 $(function() {

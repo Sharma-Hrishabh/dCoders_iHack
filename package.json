@@ -16,6 +16,7 @@
     "express": "^4.16.4",
     "lite-server": "^2.3.0",
     "mysql": "^2.16.0",
+    "nodemon": "^1.18.9",
     "truffle-hdwallet-provider": "^1.0.2"
   }
 }
