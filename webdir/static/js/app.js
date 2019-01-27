@@ -91,7 +91,8 @@ function post(account) {
 
     xhr.addEventListener("readystatechange", async function() {
         if (this.readyState === 4) {
-            var status = JSON.parse(this.responseText).status;
+            if (this.responseText != null)
+                var status = JSON.parse(this.responseText).status;
             if (status == 1) window.location.href = "timer";
             else if (status == 0) {
                 // alert("retrying in 3 seconds");

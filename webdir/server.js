@@ -64,22 +64,32 @@ app.all('/ide', function(req, res) {
 
 app.post('/userreg', function(req, res) {
     console.log('POST userreg: ' + req.body.account)
-    if (req.body.account == null)
+    if (req.body.account == null) {
         res.send({
             status: 0,
             description: "Invalid post request"
         })
-    else {
+    } else {
         try {
             connection.query('select * from participants where pubkey like \'' +
-                req.body.account + '\' and event like (select id from events order by time desc);',
+                req.body.account + '\' and event like (select id from events where time like (select max(time) from events));',
                 function(err, rows, fields) {
+                    console.log(err)
                     if (err) throw err
-                    if (rows[0].txstatus == 0) {
+                    if (rows.length == 0) {
+                        res.send({
+                            status: 3
+                        })
+                    } else if (rows[0].txstatus == 0) {
                         // TODO: recheck the transaction status
-                        res.send({status: 2, txid: rows[0].txid})
+                        res.send({
+                            status: 2,
+                            txid: rows[0].txid
+                        })
                     } else if (rows[0].txstatus == 1) {
-                        res.send({status: 3})
+                        res.send({
+                            status: 3
+                        })
                     }
                 })
         } catch (e) {
@@ -101,10 +111,11 @@ app.post('/posttx', function(req, res) {
         try {
             connection.query('insert into participants values (\'' +
                 req.body.account +
-                '\', (select id from events order by time), \'' +
+                '\', (select id from events where time like (select max(time) from events)), \'' +
                 req.body.txid +
                 '\', (select now()), 0);',
                 function(err, rows, fields) {
+                    console.log(err)
                     if (err) throw err;
                 })
             res.send({
