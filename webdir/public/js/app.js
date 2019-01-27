@@ -17,6 +17,7 @@ App = {
             function(error, result) {
                 if (!error) {
                     txID = result;
+                    postTx(txID);
                     monitor();
                 } else {
                     console.log(error);
@@ -27,14 +28,13 @@ App = {
 
     initWeb3: async function() {
         if (typeof web3 !== undefined) {
-            App.web3Provider = web3.currentProvider;
             try {
-                await App.web3Provider.enable();
+                App.web3Provider = web3.currentProvider;
+                App.web3Provider.enable();
                 web3.eth.defaultAccount = web3.eth.accounts[0];
+                post(web3.eth.defaultAccount);
             } catch (e) {
-                document.getElementById('btn1').style.display = "none";
-                alert("Access to account denied. It is required for registration.");
-                return ;
+                alert(e);
             }
         } else {
             alert("MetaMask not found! Working on localhost:7545.");
@@ -43,9 +43,8 @@ App = {
 
         web3 = new Web3(App.web3Provider);
 
-        return App.bindEvents();
+        return;
     },
-
 
     bindEvents: function() {
         $(document).on('click', '#btn1', App.register);
@@ -57,6 +56,7 @@ function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+// monitor the transaction on client-browser
 async function monitor() {
     var status = 0;
     while (status != 1) {
@@ -78,6 +78,57 @@ async function monitor() {
         });
         await sleep(1000);
     }
+}
+
+// check if user is already registered
+function post(account) {
+    var data = JSON.stringify({
+        "account": account
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", async function() {
+        if (this.readyState === 4) {
+            if (this.responseText != null)
+                var status = JSON.parse(this.responseText).status;
+            if (status == 1) window.location.href = "timer";
+            else if (status == 0) {
+                // alert("retrying in 3 seconds");
+                await sleep(1000);
+                post(web3.eth.defaultAccount);
+            } else if (status == 2) {
+                alert("Transaction still pending!\nPlease wait for confirmation.\nYou will be automatically redirected from here.");
+                txID = JSON.parse(this.responseText).txid;
+                monitor()
+            } else {
+                App.bindEvents();
+                document.getElementById('btn1').style.display = "block";
+            }
+        }
+    });
+
+    xhr.open('POST', 'userreg');
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
+}
+
+// post the transaction for logging in server
+function postTx() {
+    var data = JSON.stringify({
+        "account": web3.eth.defaultAccount,
+        "txid": txID
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.open('POST', 'posttx');
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
 }
 
 $(function() {
