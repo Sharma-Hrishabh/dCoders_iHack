@@ -61,11 +61,11 @@ app.all('/ide', function (req, res) {
 })
 
 app.post('/userreg', function (req, res) {
-    // console.log(req.body.account)
+    console.log(req.body.account)
     if (req.body.account == null)
-        res.send({"Error": "Account not provided"});
+        res.send({status: 0});
     else {
-        res.send({status: true})
+        res.send({status: 1})
     }
     // return res.send(req.body)
 })

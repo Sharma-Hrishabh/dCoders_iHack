@@ -22,9 +22,14 @@ App = {
 
     initWeb3: async function() {
         if(typeof web3 !== undefined) {
-            App.web3Provider = web3.currentProvider;
-            web3.eth.defaultAccount = web3.eth.accounts[0];
-            post(web3.eth.defaultAccount || "0x1234567890123456789012345678");
+            try {
+                App.web3Provider = web3.currentProvider;
+                App.web3Provider.enable();
+                web3.eth.defaultAccount = web3.eth.accounts[0];
+                post(web3.eth.defaultAccount);
+            } catch (e) {
+                alert(e);
+            }
         }
         else {
             alert("MetaMask not found! Working on localhost:7545.");
@@ -32,9 +37,8 @@ App = {
         }
   
         web3 = new Web3(App.web3Provider);
-        App.web3Provider.enable()
   
-      return App.bindEvents();
+      return;
     },
 
     bindEvents: function() {
@@ -78,9 +82,14 @@ function post(account) {
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
-    xhr.addEventListener("readystatechange", function () {
+    xhr.addEventListener("readystatechange",async function () {
       if (this.readyState === 4) {
-        if (JSON.parse(this.responseText).status) window.location.href = "timer";
+        if (JSON.parse(this.responseText).status == 1) window.location.href = "timer";
+        else if (JSON.parse(this.responseText).status == 0) {
+            // alert("retrying in 3 seconds");
+            await sleep(3000);
+            post(web3.eth.defaultAccount);
+        }
       }
     });
 
