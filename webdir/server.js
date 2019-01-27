@@ -72,7 +72,7 @@ app.post('/userreg', function(req, res) {
     else {
         try {
             connection.query('select * from participants where pubkey like \'' +
-                req.body.account + '\' and event like (select id from events order by time);',
+                req.body.account + '\' and event like (select id from events order by time desc);',
                 function(err, rows, fields) {
                     if (err) throw err
                     if (rows[0].txstatus == 0) {

@@ -46,3 +46,4 @@ On the completition of event, the top performers are decide based on the submiss
 - [Autoreload node server](https://stackoverflow.com/questions/1972242/how-to-auto-reload-files-in-node-js)
 - [MYSQL in node-express](https://www.terlici.com/2015/08/13/mysql-node-express.html)
 - Parse POST request in nodejs-express server [| Video](https://www.youtube.com/watch?v=rin7gb9kdpk) [| Doc](https://expressjs.com/en/resources/middleware/body-parser.html) [| Article](https://www.thepolyglotdeveloper.com/2015/10/create-a-simple-restful-api-with-node-js/)
+- [MYSQL error str_to_date](https://stackoverflow.com/questions/5426413/incorrect-datetime-value-for-function-str-to-date)
