@@ -34,31 +34,31 @@ app.use(bodyParser.urlencoded({
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // the static directories
-app.use(express.static(path.join(__dirname + '/static/js/')))
-app.use(express.static(path.join(__dirname + '/templates/')))
-app.use(express.static(path.join(__dirname + '/static/css')))
-app.use(express.static(path.join(__dirname + '/static')))
+app.use(express.static(path.join(__dirname + '/public/js/')))
+app.use(express.static(path.join(__dirname + '/views/')))
+app.use(express.static(path.join(__dirname + '/public/css')))
+app.use(express.static(path.join(__dirname + '/public')))
 
 // the root page content
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/templates/index.html'))
+    res.sendFile(path.join(__dirname + '/views/index.html'))
 })
 
 app.all('/home', function(req, res) {
     if (req.method == "GET")
-        res.sendFile(path.join(__dirname + '/templates/index.html'))
+        res.sendFile(path.join(__dirname + '/views/index.html'))
     else res.send(req.method + " request not supported.")
 })
 
 app.all('/timer', function(req, res) {
     if (req.method == "GET")
-        res.sendFile(path.join(__dirname + '/templates/timer.html'))
+        res.sendFile(path.join(__dirname + '/views/timer.html'))
     else res.send(req.method + " request not supported.")
 })
 
 app.all('/ide', function(req, res) {
     if (req.method == "GET")
-        res.sendFile(path.join(__dirname + '/templates/ide.html'))
+        res.sendFile(path.join(__dirname + '/views/ide.html'))
     else res.send(req.method + " request not supported.")
 })
 
