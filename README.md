@@ -33,11 +33,17 @@ On submission, the source code and other required details are captured from clie
 ## The Winners
 On the completition of event, the top performers are decide based on the submissions
 
-# Resolving known issues
+# Troubleshooting
 -   mysql root password reset
 
     `sudo mysqld_safe --skip-grant-tables&
     sudo mysql --user=root mysql`
+    
+    **Do this only if the following error appears on using above command:-**
+    *mysqld_safe Directory '/var/run/mysqld' for UNIX socket file don't exists*
+    
+    `mkdir -p /var/run/mysqld`
+    `chown mysql:mysql /var/run/mysqld`
     
     mysql> `update user set authentication_string=PASSWORD('new-password') where user='root';
     flush privileges; quit`
@@ -58,3 +64,7 @@ On the completition of event, the top performers are decide based on the submiss
 - [MYSQL in node-express](https://www.terlici.com/2015/08/13/mysql-node-express.html)
 - Parse POST request in nodejs-express server [| Video](https://www.youtube.com/watch?v=rin7gb9kdpk) [| Doc](https://expressjs.com/en/resources/middleware/body-parser.html) [| Article](https://www.thepolyglotdeveloper.com/2015/10/create-a-simple-restful-api-with-node-js/)
 - [MYSQL error str_to_date](https://stackoverflow.com/questions/5426413/incorrect-datetime-value-for-function-str-to-date)
+- [Export/Import mysql database](https://www.digitalocean.com/community/tutorials/how-to-import-and-export-databases-in-mysql-or-mariadb)
+- [Date in sql to javascript format](https://stackoverflow.com/questions/3075577/convert-mysql-datetime-stamp-into-javascripts-date-format)
+- [Create and export/import objects from js file](https://www.youtube.com/watch?v=e1Ln1FrLvh8)
+- [Promises in javascript](https://www.youtube.com/watch?v=s6SH72uAn3Q)

@@ -2,26 +2,21 @@ const express = require('express')
 const path = require('path')
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
+const helper = require('./scripts/mysql_helper.js')
 const app = express()
 const port = 3000
 
-// connect to mysql db
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'ujjwal',
-    password: 'root',
-    database: 'newdb'
-});
+// set engine
+app.set('view engine', 'mustache')
+app.engine('mustache', require('hogan-middleware').__express)
 
-connection.connect()
+// connect to mysql db
 
 // connection.query('SELECT * from tb;', function (err, rows, fields) {
 //   if (err) throw err
 // 
 //   console.log('The return is: ', rows[0].id, rows[0].name)
 // })
-
-// connection.end()
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -50,10 +45,38 @@ app.all('/home', function(req, res) {
     else res.send(req.method + " request not supported.")
 })
 
-app.all('/timer', function(req, res) {
-    if (req.method == "GET")
-        res.sendFile(path.join(__dirname + '/views/timer.html'))
+var promise = new Promise((resolve, reject) => {
+    var connection = helper.mysql.connect()
+    connection.query("select time from events where time > (select now());", (err, rows, fields) => {
+        connection.end
+        if (!err) resolve(rows)
+        else reject(err)
+    })
+})
+
+async function getTime() {
+    await promise.then((result) => {
+        time = result[0].time
+        return result[0].time
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
+app.all('/timer',async function(req, res) {
+    if (req.method == "GET" && req.headers.referer != null) {
+        promise.then((result) => {
+            if (result.length == 0)
+                res.send("No upcoming event")
+            else
+                res.render('timer', {event_time: result[0].time})
+        }).catch((error) => {
+            console.log(error)
+        })
+    // if (req.method == "GET") {
+    }
     else res.send(req.method + " request not supported.")
+    // res.sendFile(path.join(__dirname + '/views/timer.html'))
 })
 
 app.all('/ide', function(req, res) {
@@ -71,10 +94,12 @@ app.post('/userreg', function(req, res) {
         })
     } else {
         try {
+            var connection = helper.mysql.connect()
             connection.query('select * from participants where pubkey like \'' +
                 req.body.account + '\' and event like (select id from events where time like (select max(time) from events));',
                 function(err, rows, fields) {
-                    console.log(err)
+                    // console.log(err)
+                    connection.end
                     if (err) throw err
                     if (rows.length == 0) {
                         res.send({
@@ -88,7 +113,7 @@ app.post('/userreg', function(req, res) {
                         })
                     } else if (rows[0].txstatus == 1) {
                         res.send({
-                            status: 3
+                            status: 1
                         })
                     }
                 })
@@ -109,6 +134,7 @@ app.post('/posttx', function(req, res) {
         })
     else {
         try {
+            var connection = helper.mysql.connect()
             connection.query('insert into participants values (\'' +
                 req.body.account +
                 '\', (select id from events where time like (select max(time) from events)), \'' +
