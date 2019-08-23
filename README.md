@@ -11,7 +11,6 @@ We have developed this 'Coders Unknown Battle Portal'.
  - [Jay Rathod](https://github.com/jrathod9)
 
 ## Model design
-![model](model.jpg)
 * ### User-end
     1. Browser
     2. Metamask Extension
